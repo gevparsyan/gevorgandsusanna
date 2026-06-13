@@ -319,10 +319,38 @@ document.querySelectorAll('input[name="attend"]').forEach(r=>{
   });
 });
 
-document.getElementById("rsvpForm").addEventListener("submit",function(e){
+document.getElementById("rsvpForm").addEventListener("submit", async function(e){
   e.preventDefault();
-  this.style.display="none";
-  document.getElementById("success").style.display="block";
+
+  const name = this.querySelector('input[type="text"]').value;
+  const attend = this.querySelector('input[name="attend"]:checked')?.value;
+  const side = this.querySelector('input[name="side"]:checked')?.value;
+  const count = this.querySelector('input[type="number"]').value;
+
+  const payload = {
+    name,
+    attend,
+    side,
+    count
+  };
+
+  try {
+    await fetch(https://script.google.com/u/0/home/projects/10v1ToQXDlpXNnACjk4UrVVYhPTG9zTzb8cLdAqcR0ZVdIV_HExoSNcdW/edit, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    this.style.display = "none";
+    document.getElementById("success").style.display = "block";
+
+  } catch (err) {
+    alert("Error submitting RSVP. Please try again.");
+    console.error(err);
+  }
+});
 });
 </script>
 
