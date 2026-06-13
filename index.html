@@ -327,20 +327,17 @@ document.getElementById("rsvpForm").addEventListener("submit", async function(e)
   const side = this.querySelector('input[name="side"]:checked')?.value;
   const count = this.querySelector('input[type="number"]').value;
 
-  const payload = {
-    name,
-    attend,
-    side,
-    count
-  };
+  const formData = new URLSearchParams();
+  formData.append("name", name);
+  formData.append("attend", attend);
+  formData.append("side", side);
+  formData.append("count", count);
 
   try {
     await fetch("https://script.google.com/macros/s/AKfycbwLqCjpwrWdIL_ceHRWbTj4kHusajw3KdyoH9fCoTZ7OsgxP6ceyLCAW0jEXCpoZ1Icvg/exec", {
       method: "POST",
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-Type": "application/json"
-      }
+      body: formData,
+      mode: "no-cors"
     });
 
     this.style.display = "none";
