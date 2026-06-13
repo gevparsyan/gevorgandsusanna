@@ -4,114 +4,212 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Գևորգ & Սուսաննա</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
 :root{
---bg:#F9F5F0;
---bg2:#F4EDE5;
---accent:#C9A27D;
---accent2:#B58E69;
---text:#4A403A;
+  --bg:#F9F5F0;
+  --bg2:#F4EDE5;
+  --accent:#C9A27D;
+  --accent2:#B58E69;
+  --text:#4A403A;
 }
-*{box-sizing:border-box}
-body{
-margin:0;background:var(--bg);color:var(--text);
-font-family:"Noto Sans Armenian",sans-serif;line-height:1.6;
-}
-.hero{
-height:100vh;
-background:
-linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),
-url('hero.jpg') center/cover no-repeat;
-display:flex;align-items:center;justify-content:center;
-text-align:center;color:white;padding:20px;
-}
-.hero h1{
-font-family:"Cormorant Garamond",serif;
-font-size:clamp(48px,8vw,90px);
-font-weight:600;margin:0;
-}
-.hero p{font-size:1.15rem;max-width:650px;margin:20px auto}
-.date{font-size:1.3rem;letter-spacing:1px}
-.scroll{font-size:2rem;margin-top:30px;animation:float 2s infinite}
-@keyframes float{50%{transform:translateY(8px)}}
 
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Noto Sans Armenian",sans-serif;
+  line-height:1.6;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),
+    url('hero.jpg') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  padding:20px;
+}
+
+/* Fix hero crop on mobile */
+@media(max-width:700px){
+  .hero{
+    background-position:center 35%;
+  }
+}
+
+.hero h1{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(42px,8vw,90px);
+  font-weight:600;
+  margin:0;
+}
+
+.hero p{
+  font-size:1.1rem;
+  max-width:650px;
+  margin:20px auto;
+}
+
+.date{
+  font-size:1.2rem;
+  letter-spacing:1px;
+}
+
+.scroll{
+  font-size:2rem;
+  margin-top:30px;
+  animation:float 2s infinite;
+}
+
+@keyframes float{
+  50%{transform:translateY(8px)}
+}
+
+/* SECTIONS */
 section{padding:70px 20px}
 .container{max-width:1100px;margin:auto}
 
+/* COUNTDOWN */
 .countdown{text-align:center}
+
+.countdown h2{
+  font-size:clamp(18px,4vw,28px);
+  white-space:nowrap;
+}
+
 .count-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-max-width:900px;margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  max-width:900px;
+  margin:40px auto;
 }
-.num{font-size:clamp(42px,6vw,72px);font-weight:600}
-.label{font-size:1rem;color:#7a6f67}
 
+.num{
+  font-size:clamp(28px,6vw,72px);
+  font-weight:600;
+}
+
+.label{
+  font-size:0.9rem;
+  color:#7a6f67;
+}
+
+/* CARDS */
 .cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
 }
+
 .card{
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 8px 25px rgba(0,0,0,.08);
-text-align:center;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  text-align:center;
 }
+
 .card h3{margin-top:0}
+
+/* BUTTON */
 .btn{
-display:inline-block;
-background:var(--accent);
-color:white;
-padding:12px 22px;
-border-radius:999px;
-text-decoration:none;
+  display:inline-block;
+  background:var(--accent);
+  color:white;
+  padding:12px 22px;
+  border-radius:999px;
+  text-decoration:none;
 }
-.btn:hover{background:var(--accent2)}
 
+.btn:hover{
+  background:var(--accent2);
+}
+
+/* BANNER */
 .banner{
-height:500px;
-background:url('beach.jpg') center/cover no-repeat;
+  height:500px;
+  background:url('beach.jpg') center/cover no-repeat;
 }
 
-.form-wrap{
-max-width:650px;
-margin:auto;
-background:white;
-padding:35px;
-border-radius:20px;
-box-shadow:0 8px 25px rgba(0,0,0,.08);
-}
-input[type=text],input[type=number]{
-width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;
-}
-.group{margin-bottom:20px}
-button{
-width:100%;
-border:none;
-padding:16px;
-border-radius:999px;
-background:var(--accent);
-color:white;
-font-size:1rem;
-cursor:pointer;
-}
-#success{display:none;text-align:center;font-size:1.2rem}
-
+/* Fix mobile crop opposite direction */
 @media(max-width:700px){
-.count-grid{grid-template-columns:repeat(2,1fr)}
-.banner{height:350px}
+  .banner{
+    height:350px;
+    background-position:center 70%;
+  }
+}
+
+/* FORM */
+.form-wrap{
+  max-width:650px;
+  margin:auto;
+  background:white;
+  padding:35px;
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+input[type=text],input[type=number]{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:10px;
+}
+
+.group{margin-bottom:20px}
+
+button{
+  width:100%;
+  border:none;
+  padding:16px;
+  border-radius:999px;
+  background:var(--accent);
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+}
+
+#success{
+  display:none;
+  text-align:center;
+  font-size:1.2rem;
+}
+
+/* MOBILE FIXES */
+@media(max-width:700px){
+  section{padding:50px 15px;}
+
+  .count-grid{
+    gap:6px;
+  }
+
+  .num{
+    font-size:28px;
+  }
+
+  .label{
+    font-size:0.8rem;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <div class="hero">
   <div>
-    <h1>Գևորգ &amp; Սուսաննա</h1>
+    <h1>Գևորգ & Սուսաննա</h1>
     <p>Սիրով հրավիրում ենք Ձեզ կիսելու մեզ հետ մեր կյանքի ամենակարևոր օրը</p>
     <div class="date">7 Օգոստոսի, 2026</div>
     <div class="scroll">↓</div>
@@ -121,17 +219,20 @@ cursor:pointer;
 <section class="countdown">
 <div class="container">
 <h2>Մինչ մեր հարսանիքը մնացել է</h2>
+
 <div class="count-grid">
-<div><div class="num" id="days">0</div><div class="label">Օր</div></div>
-<div><div class="num" id="hours">0</div><div class="label">Ժամ</div></div>
-<div><div class="num" id="minutes">0</div><div class="label">Րոպե</div></div>
-<div><div class="num" id="seconds">0</div><div class="label">Վայրկյան</div></div>
+  <div><div class="num" id="days">0</div><div class="label">Օր</div></div>
+  <div><div class="num" id="hours">0</div><div class="label">Ժամ</div></div>
+  <div><div class="num" id="minutes">0</div><div class="label">Րոպե</div></div>
+  <div><div class="num" id="seconds">0</div><div class="label">Վայրկյան</div></div>
 </div>
+
 </div>
 </section>
 
 <section>
 <div class="container cards">
+
 <div class="card">
 <h3>ՊՍԱԿԱԴՐՈՒԹՅՈՒՆ</h3>
 <p>Մուղնու Սբ․ Գևորգ եկեղեցի<br><strong>14:00</strong></p>
@@ -141,8 +242,9 @@ cursor:pointer;
 <div class="card">
 <h3>ԽՆՋՈՒՅՔ</h3>
 <p>Աշտարակ Հոլ<br><strong>17:00</strong><br>Աշտարակ, Երևանյան փ․100</p>
-<a class="btn" href="#">📍 Բացել քարտեզը</a>
+<a class="btn" href="https://maps.app.goo.gl/AL8AUY3v2NNdzsHp6" target="_blank">📍 Բացել քարտեզը</a>
 </div>
+
 </div>
 </section>
 
@@ -150,9 +252,11 @@ cursor:pointer;
 
 <section>
 <div class="form-wrap">
+
 <h2 style="text-align:center">ՄԱՍՆԱԿՑՈՒԹՅԱՆ ՀԱՍՏԱՏՈՒՄ</h2>
 
 <form id="rsvpForm">
+
 <div class="group">
 <label>Անուն, Ազգանուն</label>
 <input type="text" required>
@@ -191,33 +295,34 @@ cursor:pointer;
 const weddingDate = new Date("2026-08-07T14:00:00");
 
 function updateCountdown(){
- const now = new Date();
- const diff = weddingDate - now;
+  const now = new Date();
+  const diff = weddingDate - now;
 
- const d = Math.floor(diff/(1000*60*60*24));
- const h = Math.floor((diff/(1000*60*60))%24);
- const m = Math.floor((diff/(1000*60))%60);
- const s = Math.floor((diff/1000)%60);
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff/(1000*60*60))%24);
+  const m = Math.floor((diff/(1000*60))%60);
+  const s = Math.floor((diff/1000)%60);
 
- document.getElementById("days").textContent=d;
- document.getElementById("hours").textContent=h.toString().padStart(2,"0");
- document.getElementById("minutes").textContent=m.toString().padStart(2,"0");
- document.getElementById("seconds").textContent=s.toString().padStart(2,"0");
+  document.getElementById("days").textContent=d;
+  document.getElementById("hours").textContent=h.toString().padStart(2,"0");
+  document.getElementById("minutes").textContent=m.toString().padStart(2,"0");
+  document.getElementById("seconds").textContent=s.toString().padStart(2,"0");
 }
+
 setInterval(updateCountdown,1000);
 updateCountdown();
 
 document.querySelectorAll('input[name="attend"]').forEach(r=>{
- r.addEventListener('change',e=>{
-  document.getElementById('qtyBlock').style.display =
-   e.target.value==="Ոչ" ? 'none' : 'block';
- });
+  r.addEventListener('change',e=>{
+    document.getElementById('qtyBlock').style.display =
+      e.target.value==="Ոչ" ? 'none' : 'block';
+  });
 });
 
 document.getElementById("rsvpForm").addEventListener("submit",function(e){
- e.preventDefault();
- this.style.display="none";
- document.getElementById("success").style.display="block";
+  e.preventDefault();
+  this.style.display="none";
+  document.getElementById("success").style.display="block";
 });
 </script>
 
