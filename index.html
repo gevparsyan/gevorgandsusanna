@@ -40,10 +40,12 @@ body{
   padding:20px;
 }
 
-/* Fix hero crop on mobile */
+/* Fix hero crop + move text down on mobile */
 @media(max-width:700px){
   .hero{
     background-position:center 35%;
+    align-items:flex-end;
+    padding-bottom:60px;
   }
 }
 
@@ -142,11 +144,11 @@ section{padding:70px 20px}
   background:url('beach.jpg') center/cover no-repeat;
 }
 
-/* Fix mobile crop opposite direction */
+/* Fix mobile crop so both people visible */
 @media(max-width:700px){
   .banner{
     height:350px;
-    background-position:center 70%;
+    background-position:70% center;
   }
 }
 
@@ -350,7 +352,6 @@ document.getElementById("rsvpForm").addEventListener("submit", async function(e)
     console.error(err);
   }
 });
-
 </script>
 
 </body>
