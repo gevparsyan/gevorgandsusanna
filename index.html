@@ -31,7 +31,7 @@ body{
   height:100vh;
   background:
     linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),
-    url('hero.jpg') center/cover no-repeat;
+    url('hero_2.jpg') center/cover no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -40,9 +40,13 @@ body{
   padding:20px;
 }
 
-/* Fix hero crop + move text down on mobile */
+/* Mobile version */
 @media(max-width:700px){
   .hero{
+    background:
+      linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),
+      url('hero.jpg') center/cover no-repeat;
+
     background-position:center 35%;
     align-items:flex-end;
     padding-bottom:60px;
