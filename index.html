@@ -40,13 +40,11 @@ body{
   padding:20px;
 }
 
-/* Mobile version */
 @media(max-width:700px){
   .hero{
     background:
       linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),
       url('hero.jpg') center/cover no-repeat;
-
     background-position:center 35%;
     align-items:flex-end;
     padding-bottom:60px;
@@ -143,13 +141,29 @@ section{padding:70px 20px}
   background:var(--accent2);
 }
 
+button{
+  width:100%;
+  border:none;
+  padding:16px;
+  border-radius:999px;
+  background:var(--accent);
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+}
+
+/* Disabled button style */
+button:disabled{
+  cursor:not-allowed;
+  opacity:0.6;
+}
+
 /* BANNER */
 .banner{
   height:500px;
   background:url('hero_3.jpg') center/cover no-repeat;
 }
 
-/* Fix mobile crop so both people visible */
 @media(max-width:700px){
   .banner{
     height:350px;
@@ -176,17 +190,6 @@ input[type=text],input[type=number]{
 
 .group{margin-bottom:20px}
 
-button{
-  width:100%;
-  border:none;
-  padding:16px;
-  border-radius:999px;
-  background:var(--accent);
-  color:white;
-  font-size:1rem;
-  cursor:pointer;
-}
-
 #success{
   display:none;
   text-align:center;
@@ -196,18 +199,9 @@ button{
 /* MOBILE FIXES */
 @media(max-width:700px){
   section{padding:50px 15px;}
-
-  .count-grid{
-    gap:6px;
-  }
-
-  .num{
-    font-size:28px;
-  }
-
-  .label{
-    font-size:0.8rem;
-  }
+  .count-grid{gap:6px;}
+  .num{font-size:28px;}
+  .label{font-size:0.8rem;}
 }
 </style>
 </head>
@@ -288,7 +282,7 @@ button{
 <input type="number" min="1" value="1">
 </div>
 
-<button type="submit">Ուղարկել</button>
+<button type="submit" id="submitBtn">Ուղարկել</button>
 </form>
 
 <div id="success">
@@ -331,6 +325,14 @@ document.querySelectorAll('input[name="attend"]').forEach(r=>{
 document.getElementById("rsvpForm").addEventListener("submit", async function(e){
   e.preventDefault();
 
+  if (!this.checkValidity()) return;
+
+  const submitBtn = document.getElementById("submitBtn");
+  const originalText = submitBtn.textContent;
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Ուղարկվում է...";
+
   const name = this.querySelector('input[type="text"]').value;
   const attend = this.querySelector('input[name="attend"]:checked')?.value;
   const side = this.querySelector('input[name="side"]:checked')?.value;
@@ -355,6 +357,9 @@ document.getElementById("rsvpForm").addEventListener("submit", async function(e)
   } catch (err) {
     alert("Error submitting RSVP. Please try again.");
     console.error(err);
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
   }
 });
 </script>
